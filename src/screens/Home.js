@@ -13,7 +13,7 @@ const LineDivider = () => {
     )
 }
 
-const Home = () => {
+const Home = ({navigation}) => {
 
     const profileData = {
         name: 'Username',
@@ -257,7 +257,9 @@ style={{
 
             }}
 
-            onPress={() => console.log('My book')}
+            onPress={() => navigation.navigate("BookDetail",
+            {book: item}
+            )}
             >
 {/* Book Cover */}
 <Image
@@ -370,7 +372,9 @@ return(
     <View style={{marginVertical: SIZES.base}}>
         <TouchableOpacity
         style={{flex:1, flexDirection:'row'}}
-        onPress={() => console.log("Category data")}
+        onPress={() => navigation.navigate("BookDetail",
+        {book: item}
+        )}
         >
 {/* Book Cover */}
 <Image
@@ -380,7 +384,7 @@ style={{
     width:100,height:150, borderRadius:10
 }}
 />
-<View>
+<View style={{marginLeft:SIZES.base}}>
     {/* book name and author */}
     <View>
         <Text style={{paddingRight:SIZES.padding, ...FONTS.h2, color:COLORS.white}}>{item.bookName}</Text>
@@ -421,7 +425,7 @@ style={{
         padding:SIZES.base,
         marginRight:SIZES.base, backgroundColor:COLORS.darkGreen, height:40, borderRadius:SIZES.radius
     }}>
-<Text style={{...FONTS.body3, color:COLORS.lightGreen}}>Adventure</Text>
+<Text style={{fontSize:12, color:COLORS.lightGreen}}>Adventure</Text>
     </View>
 }
 
@@ -433,7 +437,7 @@ style={{
         padding:SIZES.base,
         marginRight:SIZES.base, backgroundColor:COLORS.darkRed, height:40, borderRadius:SIZES.radius
     }}>
-<Text style={{...FONTS.body3, color:COLORS.lightRed}}>Romance</Text>
+<Text style={{fontSize:12, color:COLORS.lightRed}}>Romance</Text>
     </View>
 }
 
@@ -445,12 +449,30 @@ style={{
         padding:SIZES.base,
         marginRight:SIZES.base, backgroundColor:COLORS.darkBlue, height:40, borderRadius:SIZES.radius
     }}>
-<Text style={{...FONTS.body3, color:COLORS.lightBlue}}>Drama</Text>
+<Text style={{fontSize:12, color:COLORS.lightBlue}}>Drama</Text>
     </View>
 }
 </View>
 </View>
 
+        </TouchableOpacity>
+{/* 
+        Bookmark Button */}
+
+        <TouchableOpacity style={{
+            position:'absolute', top:5, right:15
+        }}
+        onPress={() => console.log("Bookmark")}
+        >
+<Image
+source={icons.bookmark_icon}
+resizeMode='contain'
+style={{
+    width:25,
+    height:25,
+    tintColor:COLORS.lightGray
+}}
+/>
         </TouchableOpacity>
     </View>
 )
